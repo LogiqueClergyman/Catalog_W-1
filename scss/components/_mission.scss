@@ -1,0 +1,102 @@
+@use '../utils/index' as *;
+
+.mission {
+    // Container for the mission section
+    display: flex;
+    justify-content: space-between; // Space between the left (image) and right (content) parts
+    align-items: center; // Vertically center both image and content on large screens
+    width: 100%;
+    background-color: $color-secondary;
+    // Image container
+    @include respond(tablet) {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+    .mission-image {
+        flex: 1; // This will take 50% of the width on desktop
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .mission-image-img {
+            width: 100%; // Ensure the image takes full width of its container
+            height: auto; // Keep aspect ratio intact
+            object-fit: fill; // Ensures the image covers the container without distortion
+        }
+    }
+
+    // Description container
+    .mission-desc {
+        flex: 1; // This will also take 50% of the width on desktop
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column; // Align content vertically
+        .mission-desc-content {
+            text-align: center; // Center the content
+            max-width: 700px;
+            padding: 5rem;
+            .mission-desc-content-title {
+                font-size: $text-sl;
+                font-family: 'Mulish', sans-serif;
+                font-weight: 700;
+                text-transform: uppercase;
+                color: $color-primary;
+                @include respond(mobile) {
+                    font-size: $text-heading-mobile;
+                }
+            }
+
+            .mission-desc-content-text {
+                font-size: $text-base;
+                color: $color-primary;
+                font-family: 'Mulish', sans-serif;
+                font-weight: 600;
+                line-height: 1.8;
+                text-align: center;
+                
+                p {
+                    margin-block: 5rem;// Space between paragraphs
+                }
+            }
+
+            .mission-desc-content-btn {
+                width: 212px;
+                height: 64px;
+                background-color: $color-secondary;
+                color: $color-primary;
+                border-width: 2px;
+                border-color: $color-primary;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                font-size: $text-xs;
+                font-family: 'Mulish', sans-serif;
+                font-weight: 400;
+                &:hover {
+                    background-color: darken($color-primary, 10%);
+                }
+            }
+        }
+    }
+
+    // Responsive styles for tablet and mobile views
+    @include respond(tablet) {
+        flex-direction: column; // Stack the image and content vertically on tablets
+
+        .mission-image {
+            display: none; // Hide the image on tablet and below
+        }
+
+        .mission-desc {
+            width: 100%; // Ensure the content takes up the full width
+            padding: 2rem; // Padding around the content in smaller screens
+        }
+    }
+
+    @include respond(mobile) {
+        .mission-desc-content {
+            padding: 1rem; // Adjust padding for mobile devices
+        }
+    }
+}
