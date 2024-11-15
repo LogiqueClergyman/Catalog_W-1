@@ -1,0 +1,160 @@
+@use '../utils/index' as *;  // Import the utilities
+
+.about{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    &-desc{
+        max-width: 961px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        border: #444;
+        border-width: 1px;
+        border-style: solid;
+        box-shadow: #444;
+        padding-inline: 10rem;
+        padding-top: 3rem;
+        padding-bottom: 5rem;
+        @include respond(mobile){
+            padding-inline: 2rem;
+            padding-bottom: 7rem;
+        }
+        &-title{
+            font-size: $text-xl;
+            font-weight: 400;
+            text-transform: uppercase;
+            font-family: 'Mulish', sans-serif;
+            color: $color-dark;
+            margin-bottom: 2rem;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+
+            & .hero-title-underline {
+                width: 160px;
+                margin: auto;
+                height: 2px;
+                background-color: $color-secondary;
+                margin-top: 1rem;
+                margin-bottom: 3rem;
+            }
+        }
+        &-content{
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            &-text{
+                font-size: $text-base;
+                color: $color-text;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 400;
+                
+            }
+        }
+    }
+    &-cards{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        @include respond(tablet){
+            flex-direction: column;
+        }
+        align-items: stretch;
+        &-card{
+            max-width: 367px;
+            max-height: 296px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            margin: 1rem;
+            padding: 2rem;
+            background-color: $color-primary;
+            border: #444;
+            border-width: 1px;
+            border-style: solid;
+            box-shadow: #444;
+            padding-bottom: 6rem;
+            &-title{
+                font-size: $text-l;
+                font-weight: 400;
+                font-family: 'Mulish', sans-serif;
+                color: $color-dark;
+                margin-bottom: 1rem;
+            }
+            &-desc{
+                font-size: $text-base;
+                color: $color-text;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 400;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2rem 0;
+    width: 100%;
+    position: relative;
+    @include respond(mobile){
+        display: none;
+    }
+  
+    // Horizontal line connecting the circles
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      right: 5%;
+      height: 2px;
+      background-color: #b39cbb; // Light purple color for the line
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+  }
+  
+  .item {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    padding-top: 3rem;
+    .circle {
+      width: 50px;
+      height: 50px;
+      border: 2px solid #b39cbb; // Light purple color for the border
+      border-radius: 50%;
+      background-color: $color-primary;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+  
+      .checkmark {
+        color: #e94b73; // Pinkish-red color for the checkmark
+        font-size: 24px;
+      }
+    }
+  
+    .text {
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.4;
+  
+      span {
+        display: block;
+      }
+    }
+  }
+  

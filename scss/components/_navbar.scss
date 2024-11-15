@@ -1,0 +1,128 @@
+@use '../utils/index' as *;
+.navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include respond(mobile) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    align-items: center;
+
+    &-logo {
+        margin: $spacing-base;
+
+
+        img {
+            width: 100px;
+        }
+    }
+
+    &-menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background-color: $color-primary;
+
+        &-item {
+            margin: $spacing-base;
+
+            @include respond(desktop) {
+                margin: $spacing-large;
+            }
+
+            list-style: none;
+            margin: 0 1rem;
+
+            a {
+                color: $color-dark;
+                text-decoration: none;
+
+                &:hover {
+                    color: $color-secondary;
+                }
+            }
+        }
+
+        @include respond(mobile) {
+            display: none;
+            flex-direction: column;
+            width: 100%; /* Ensure the menu takes full width on mobile */
+            position: absolute;
+            top: 60px; /* Adjust based on navbar height */
+            left: 0;
+            background-color: $color-primary;
+        }
+    }
+
+    &-toggle {
+        display: none;
+
+        @include respond(mobile) {
+            display: none;
+            margin: $spacing-base;
+
+            &-label {
+                display: block;
+                font-size: $text-xl-mobile;
+                color: $color-dark;
+                cursor: pointer;
+
+                /* Hamburger icon styles */
+                position: relative;
+                width: 30px;
+                height: 30px;
+                background: transparent;
+                border: none;
+                padding: 0;
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                align-items: center;
+
+                &::before,
+                &::after {
+                    content: '';
+                    width: 100%;
+                    height: 4px;
+                    background-color: $color-dark;
+                    border-radius: 4px;
+                    transition: all 0.3s ease;
+                }
+
+                & span {
+                    width: 100%;
+                    height: 4px;
+                    background-color: $color-dark;
+                    border-radius: 4px;
+                    transition: all 0.3s ease;
+                }
+            }
+
+            input:checked + .navbar-toggle-label {
+                &::before {
+                    transform: rotate(45deg);
+                    top: 10px;
+                }
+
+                &::after {
+                    transform: rotate(-45deg);
+                    top: -10px;
+                }
+
+                & span {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+
+    /* Toggle the navbar menu when the checkbox is checked */
+    input:checked + .navbar-toggle-label + .navbar-menu {
+        display: flex;
+    }
+}

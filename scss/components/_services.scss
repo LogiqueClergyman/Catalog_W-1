@@ -1,0 +1,29 @@
+.services {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &-A,
+    &-B {
+        display: flex;
+        justify-content: space-around;
+        &-card{
+            width: 30%;
+            padding: 2rem;
+            text-align: center;
+            background-color: $color-white;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 1rem rgba($color-black, 0.1);
+            z-index: 10;
+            @include respond(mobile) {
+                width: 100%;
+                margin-bottom: 2rem;
+            }
+        }
+    }
+    &-A-card{
+        margin-top: -1rem;
+    }
+    &-B-card{
+        margin-bottom: 1rem;
+    }
+}
