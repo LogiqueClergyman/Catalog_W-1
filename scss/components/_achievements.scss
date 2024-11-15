@@ -1,6 +1,7 @@
 @use '../utils/index' as *;  // Import the utilities
 
 .achievements {
+    padding-block: 10rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -29,6 +30,10 @@
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
+            text-align: center;
+            @include respond(mobile) {
+                font-size: $text-heading-mobile;
+            }
         }
         &-desc {
             text-align: center;
@@ -37,28 +42,45 @@
             font-family: 'Open Sans', sans-serif;
             font-weight: 600;
         }
-        &-stats{
+        &-stats {
             width: 100%;
             display: flex;
-            flex-direction: row;
+            flex-direction: row; /* Align in a row by default */
             justify-content: space-between;
-            align-items: center;
-            &-stat{
+            align-items: flex-start; /* Align the items to the top by default */
+            gap: 20px; /* Optional: Adds space between the stat cards */
+        
+            /* Responsive design for smaller screens */
+            @include respond(mobile) {
+                flex-wrap: wrap; /* Allow items to wrap to the next line */
+                justify-content: center; /* Center the items when wrapping */
+                gap: 20px; /* Space between cards in mobile view */
+            }
+        
+            /* Stat card styles */
+            &-stat {
                 display: flex;
                 flex-direction: column;
-                // @include respond(mobile){
-                //     gap: 2rem;
-                //     flex-wrap: wrap;
-                // }
-                justify-content: space-around;
+                justify-content: center;
                 align-items: center;
-                &-number{
+                width: 30%; /* Default width of each stat card (for larger screens) */
+                margin-bottom: 20px; /* Space between cards in mobile view */
+                
+                /* Mobile adjustments (single column layout) */
+                @include respond(mobile) {
+                    width: 45%; /* Cards take up about half of the width */
+                    padding: 1rem; /* Add padding around stat cards */
+                    margin-bottom: 10px; /* Smaller gap between cards on mobile */
+                }
+        
+                &-number {
                     font-size: $text-sl;
                     font-weight: 700;
                     color: $color-primary;
                     font-family: 'Mulish', sans-serif;
                 }
-                &-text{
+        
+                &-text {
                     font-size: $text-xs;
                     color: $color-primary;
                     text-transform: uppercase;
@@ -67,5 +89,6 @@
                 }
             }
         }
+        
     }
 }

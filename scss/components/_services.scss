@@ -1,29 +1,102 @@
+@use '../utils/index' as *;
+
 .services {
+    // Container for the services section
+    width: 100%;
+    padding: 8rem 0; // Vertical padding for spacing around the section
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    &-A,
-    &-B {
-        display: flex;
-        justify-content: space-around;
-        &-card{
-            width: 30%;
-            padding: 2rem;
-            text-align: center;
-            background-color: $color-white;
-            border-radius: 0.5rem;
-            box-shadow: 0 0 1rem rgba($color-black, 0.1);
-            z-index: 10;
+    align-items: center; // Center the content horizontally
+
+    // Title section - keeps the title centered
+    .services-title {
+        text-align: center;
+        margin-bottom: 4rem; // Space between title and cards
+
+        .services-title-text {
+            font-size: $text-xl;
+            font-weight: 400;
+            color: $color-dark;
+            margin-bottom: 2rem;
+            font-family: 'Mulish', sans-serif;
+            text-transform: uppercase;
             @include respond(mobile) {
-                width: 100%;
-                margin-bottom: 2rem;
+                font-size: $text-heading-mobile;
             }
         }
+
+        .services-title-underline {
+            width: 170px; // The width of the underline
+            height: 3px;
+            background-color: $color-secondary; // Your secondary color
+            margin-top: 0.5rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
-    &-A-card{
-        margin-top: -1rem;
+
+    // Grid container for the cards
+    .services-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); // Default: 3 columns for desktop
+        gap: 2rem; // Space between cards
+        width: 100%; // Ensures the grid takes the full width of the section
+        max-width: 1150px;
+        padding: 4rem;
+        padding-bottom: 8rem;
+        // For large screens (desktop)  
+        @include respond(desktop) {
+            grid-template-columns: repeat(3, 1fr); // 3 columns for desktop
+            grid-template-rows: repeat(2, 1fr); // 2 rows for desktop (if needed)
+        }
+
+        // For tablets
+        @include respond(tablet) {
+            grid-template-columns: repeat(2, 1fr); // 2 columns for tablet
+            grid-template-rows: repeat(3, 1fr);
+            grid-column-gap: 2rem;
+        }
+
+        // For mobile
+        @include respond(mobile) {
+            grid-template-columns: 1fr; // 1 column for mobile (stacked vertically)
+            grid-template-rows: repeat(6, 1fr); 
+            padding-bottom: 4rem;
+        }
     }
-    &-B-card{
-        margin-bottom: 1rem;
+
+    .services-cards-card {
+        background-color: $color-primary; // Card background color
+        padding: 1rem;
+        max-width: 367px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .services-cards-card-icon {
+            height: 105px;
+            width: 105px;
+            @include respond(mobile) {
+                height: 90px;
+                width: 90px;
+            }
+            margin-bottom: 1rem;
+        }
+
+        .services-cards-card-title {
+            font-family: 'Mulish', sans-serif;
+            font-weight: 400;
+            font-size: $text-l;
+            color: $color-dark;
+            margin-bottom: 0.5rem;
+            @include respond(mobile) {
+                font-size: $text-subheading-mobile-small;
+            }
+        }
+
+        .services-cards-card-text {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            font-size: $text-base;
+            color: $color-text;
+        }
     }
 }
