@@ -73,6 +73,11 @@
                 font-size: $text-xs;
                 font-family: 'Mulish', sans-serif;
                 font-weight: 400;
+                @include respond(mobile) {
+                    font-size: $text-mobile-small;
+                    height: 56px;
+                    width: 186px;
+                }
                 &:hover {
                     background-color: darken($color-primary, 10%);
                 }

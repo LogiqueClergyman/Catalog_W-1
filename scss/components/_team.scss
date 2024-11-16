@@ -1,0 +1,174 @@
+@use '../utils/index' as *;
+
+.team {
+//   padding: 0rem;
+  overflow: hidden; // Ensure overflow is hidden for the entire section
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  .team-content {
+    text-align: center;
+
+    &-title {
+      margin-bottom: 8rem;
+        @include respond(mobile) {
+            margin-bottom: 6rem;
+        }
+      &-text {
+        font-family: 'Mulish', sans-serif;
+        color: $color-dark;
+        font-size: $text-xl;
+        font-weight: 400;
+        text-transform: uppercase;
+        @include respond(mobile) {
+          font-size: $text-heading-mobile;
+        }
+      }
+
+      &-underline {
+        width: 18.5rem;
+        height: 0.2rem;
+        margin: 2rem auto;
+        background-color: $color-secondary;
+      }
+    }
+
+    &-carousel {
+      display: flex;
+      gap: 4rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+    //   scroll-snap-type: x mandatory; // Enable snap scrolling behavior
+      scroll-behavior:smooth;
+      padding-left: 19rem;
+      padding-right: 19rem;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      -ms-overflow-style: none; 
+      scrollbar-width: none;
+      @media screen and (max-width: 1150px) {
+        padding-left: 0rem;
+        padding-right: 0rem;
+      }
+      @include respond(tablet) {
+        padding-left: 4rem;
+        padding-right: 4rem;
+      }
+      &-card { // Ensure cards take 30% of the available width
+        background-color: $color-primary;
+        border-radius: 1rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        // text-align: center;
+        scroll-snap-align: start; // Make cards snap properly on scroll
+        max-height: 468px;
+        min-width: 337px;
+        // margin-left: 9rem;
+        @include respond(tablet) {
+          margin-left: 0rem;
+        }
+        &-image{
+            &-img {
+                width: 100%;
+                background-size: cover;
+                background-position: center;
+                margin-bottom: 1rem;
+            }
+        }
+
+        &-title {
+            text-align: left;
+            margin: 2rem;
+          &-name {
+            font-size: $text-m;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            font-family: 'Mulish', sans-serif;
+            color: $color-dark;
+            @include respond(mobile) {
+              font-size: $text-base;
+            }
+          }
+
+          &-position {
+            font-family: 'Mulish', sans-serif;
+            color: $color-text;
+            font-weight: 600;
+            font-size: $text-xs;
+            @include respond(mobile) {
+                font-size: $text-xs;
+            }
+        }
+    }
+    
+    &-desc {
+        font-size: $text-base;
+        color: $color-text;
+        font-family: 'Open sans', sans-serif;
+        font-weight: 400;
+        margin: 2rem;
+        margin-bottom: 4rem;
+        text-align: left;
+          @include respond(mobile) {
+            font-size: $text-mobile-xmsmall;
+          }
+        }
+      }
+@include respond(mobile) {
+    display: flex;
+    flex-direction: column; // Stack vertically
+    align-items: center; // Center-align cards horizontally
+    justify-content: space-between; // Space cards evenly
+    padding: 2rem; // Add padding for spacing
+    // gap: 5rem; // Add vertical spacing between cards
+    overflow: hidden; // Hide overflow
+  
+    &-card {
+      width: 100%; // Allow cards to shrink based on available space
+      max-width: 230px; // Restrict maximum width to 230px
+      min-width: 0; // Override larger screen's min-width of 337px
+      height: auto; // Add some internal padding for content
+      box-sizing: border-box; // Ensure padding doesn’t affect dimensions
+  
+      &-image {
+        &-img {
+          width: 100%; // Ensure the image fits the card width
+          height: 150px; // Set a specific height for images
+          object-fit: cover; // Maintain aspect ratio and crop excess
+          background-size: cover;
+          background-position: center;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+  
+    }
+  }
+
+  .team-content-next {
+      margin-top: 4rem;
+      margin-right: 18rem;
+      text-align: right;
+       @media screen and (max-width: 1150px) {
+        margin-right: 4rem;
+        
+       }
+      @include respond(mobile) {
+        display: none;
+      }
+
+    &-button {
+      background-color: $color-primary;
+      color: $color-dark;
+      font-size: 1.6rem;
+      margin: 1rem 2rem 0rem 20rem;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: darken($color-secondary, 10%);
+      }
+    }
+  }
+}
