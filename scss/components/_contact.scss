@@ -1,0 +1,65 @@
+@use '../utils/index' as *;
+
+.contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color:  $color-secondary;
+    padding: 8rem 1.3rem;
+    @include respond(mobile) {
+        padding: 12rem 1.3rem;
+    }
+    &-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem; // Space between elements
+  
+      &-title {
+          text-transform: uppercase;
+          font-weight: 600;
+          color: $color-primary;
+          font-family: 'Mulish', sans-serif;
+          font-size: $text-xl;
+        padding: 0 2.5rem;
+        @include respond(mobile) {
+            font-size: $text-l-mobile;
+
+        }
+      }
+  
+      &-desc {
+        font-size: $text-lbase;
+        color: $color-primary;
+        font-weight: 400;
+        font-family: 'Open Sans', sans-serif;
+        max-width: 784px; // Limit width for readability
+        margin: 3rem 0;
+        @include respond(mobile) {
+            font-size: $text-base;
+        }
+      }
+  
+      &-input {
+        width: 267px;
+        height: 48px;
+        border: 1px solid $color-secondary;
+        border-radius: 5px;
+        padding: 0 1rem;
+        font-size: $text-base;
+        font-family: 'Mulish', sans-serif;
+        outline: none;
+        
+        &:focus {
+          border-color: $color-dark;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        &::placeholder {
+          color: #BBC8D4;
+          font-family: 'Mulish', sans-serif;
+        }
+      }
+    }
+  }
+  
