@@ -41,6 +41,7 @@
       scroll-behavior:smooth;
       padding-left: 19rem;
       padding-right: 19rem;
+      padding-bottom: 1rem;
       &::-webkit-scrollbar {
         display: none;
       }
@@ -56,8 +57,7 @@
       }
       &-card { // Ensure cards take 30% of the available width
         background-color: $color-primary;
-        border-radius: 1rem;
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 8px 11px -5px rgba(0,0,0,0.75);
         // text-align: center;
         scroll-snap-align: start; // Make cards snap properly on scroll
         max-height: 468px;

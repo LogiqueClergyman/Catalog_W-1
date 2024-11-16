@@ -1,13 +1,13 @@
 @use '../utils/index' as *;  // Import the utilities
-.section-1{
+.section-1 {
+    position: relative;  // Ensure relative positioning to contain the overlay
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 85vh;  // Full height of the viewport
     background: url('https://s3-alpha-sig.figma.com/img/5d0f/0234/4a5201a568ff48e8c37440e3b0ea754f?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Byb9EXDkg5MOOM4NNZ61LE5npt5Mvlb-1~a1CTSRg8RgZlfyauRd9R5mqwVIJlXOdeO33PMtU~Be01W577qZkd9GqQnp-17WlVpkl4D-UgPvpR7a5x-j1p8YIYwi~cQ0x2NgNavNEGQLNoACM57lb~J7~-fc~BT712kvESf4DrqQ29CYgIm8pHtKzl07Fe0RjjuwII6AIXgAYUGsMZcjrIT6cq~Ew2rxsP~VvqUxk~DrjOTWYhC0Bw-TPUOLdf6BI8YBfh35BubUZwVbkNOKaUHBpC~qxIn0VgmNpUoh0NwpATCjKfOua7f2oQ328vPjClvbGTZRHNhKsOSIUu26CA__') no-repeat;  // Background image
     background-position: center;
-    background-size:cover;
+    background-size: cover;
     
     &::before {
         content: '';
@@ -16,19 +16,19 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(86, 17, 17, 0.2);  // Grey overlay with opacity (adjust for darker/lighter overlay)
+        background: rgba(69, 27, 27, 0.3);  // Grey overlay with opacity (adjust for darker/lighter overlay)
         z-index: 1;  // Make sure the overlay stays behind the content
     }
+
     @include respond(tablet) {
-        height: 50vh;  // Adjust the height for tablet
-        background-size:cover;
+        background-size: cover;
     }
 
     @include respond(mobile) {
-        height: 90vh;  // Adjust the height for mobile
-        background-size:cover;
+        background-size: cover;
     }
 }
+
 .hero {
     display: flex;
     flex-direction: column;
@@ -37,11 +37,12 @@
     position: relative;
     color: $color-text;  // You can change this to suit your design
     max-width: fit-content;
+    padding: 20rem;
+    @include respond(mobile) {
+        padding: 10rem 0;
+    }
     &-title {
         font-size: $text-xl;
-        @include respond(mobile) {
-            font-size: $text-xl-mobile;
-        }
         font-family: 'Mulish', sans-serif;
         font-weight: 800;
         color: $color-primary;
@@ -74,17 +75,20 @@
         @include respond(mobile) {
             font-size: 1rem;
             font-size: $text-base;
-            
         }
     }
 
     &-search {
+        z-index: 100;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 2rem;  // Allow the search section to take full width of its container
+        margin-top: 2rem;
         width: 100%;
         padding-inline: 3rem;
+        font-size: $text-base;
+        font-family: 'Mulish', sans-serif;
+        font-weight: 600;
         @include respond(mobile) {
             flex-direction: column;
             align-items: center;
@@ -93,11 +97,14 @@
         .hero-search-input {
             padding: 1rem;
             font-size: 1.2rem;
-            border: 1px solid $color-text;
-            border-radius: 4px;
+            border: 3px solid rgb(227, 226, 226);
+            border-radius: 5px;
             margin-right: 1rem;
             height: 100%;
             width: 100%;
+            font-size: $text-sm;
+        font-family: 'Mulish', sans-serif;
+        font-weight: 600;
             @include respond(mobile) {
                 width: 100%;  // Take full width on mobile for better UX
                 margin-bottom: 1rem;  // Add space between input and button
@@ -107,13 +114,15 @@
 
         .hero-search-button {
             width: 165px;
-            height: 53px;
+            height: 56px;
             @include respond(mobile) {
                 height: 52px;
                 width: 155px;
             }
             padding: 1rem 2rem;
-            font-size: 1.2rem;
+            font-size: $text-sm;
+        font-family: 'Mulish', sans-serif;
+        font-weight: 600;
             background-color: $color-secondary;
             color: $color-white;
             border: none;
@@ -126,13 +135,13 @@
             }
         }
     }
-    
+
     &-bg {
-        position: absolute;
+        position: relative;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        z-index: -1;  // Make sure the background image stays behind content
+        z-index: -1;
     }
 }

@@ -1,22 +1,26 @@
 @use '../utils/index' as *;  // Import the utilities
 
 .about{
+    background-color: $color-primary;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     &-desc{
+        margin-top: -5rem;
+        @include respond(tablet){
+            margin-top: 0rem;
+        }
+        z-index: 100;
+        background-color: $color-primary;
         max-width: 961px;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
-        border: #444;
-        border-width: 1px;
-        border-style: solid;
-        box-shadow: #444;
+        box-shadow: 0px 3px 9px -1px rgba(0,0,0,0.75);
         padding-inline: 10rem;
-        padding-top: 3rem;
+        padding-top: 5rem;
         padding-bottom: 5rem;
         @include respond(mobile){
             padding-inline: 2rem;
@@ -63,8 +67,12 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
+        margin-bottom: -10rem;
+        margin-top: 10rem;
         @include respond(tablet){
             flex-direction: column;
+        }@include respond(mobile){
+            padding: 0 2rem;
         }
         align-items: stretch;
         &-card{
@@ -77,10 +85,7 @@
             margin: 1rem;
             padding: 2rem;
             background-color: $color-primary;
-            border: #444;
-            border-width: 1px;
-            border-style: solid;
-            box-shadow: #444;
+            box-shadow: 0px 8px 11px -5px rgba(0,0,0,0.75);
             padding-bottom: 6rem;
             &-title{
                 font-size: $text-l;
@@ -146,15 +151,20 @@
         font-size: 24px;
       }
     }
-  
+
     .text {
-      font-size: 1rem;
-      color: #444;
+      font-size: $text-base;
+      color: $color-text;
+      text-transform: uppercase;
       line-height: 1.4;
-  
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
       span {
         display: block;
       }
     }
   }
   
+  .checkmark{
+    padding-top: 1rem;
+  }

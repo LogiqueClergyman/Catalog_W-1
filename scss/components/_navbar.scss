@@ -1,5 +1,6 @@
 @use '../utils/index' as *;
 .navbar {
+    background-color: $color-primary;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,11 +13,33 @@
     align-items: center;
 
     &-logo {
-        margin: $spacing-base;
-
-
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @include respond(mobile) {
+            margin: 2rem;
+        }
         img {
             width: 100px;
+            @include respond(mobile) {
+                width: 40px;
+            }
+        }
+        &-title {
+            font-size: $text-base;
+            color: $color-dark;
+            font-family: 'Mulish', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            @include respond(mobile) {
+                font-size: 6px;
+            }
+            &-red {
+                color: $color-secondary;
+            }
+            &-blue {
+                color: $color-dark;
+            }
         }
     }
 
@@ -27,7 +50,10 @@
         align-items: center;
         padding: 1rem;
         background-color: $color-primary;
-
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        color: $color-dark;
+        font-size: 20px;
         &-item {
             margin: $spacing-base;
 
@@ -37,7 +63,7 @@
 
             list-style: none;
             margin: 0 1rem;
-
+            margin-top: 0rem;
             a {
                 color: $color-dark;
                 text-decoration: none;
@@ -51,75 +77,56 @@
         @include respond(mobile) {
             display: none;
             flex-direction: column;
+            align-items: flex-start;
+            padding: 3rem 0;
             width: 100%; /* Ensure the menu takes full width on mobile */
+            // height: 90vh;
             position: absolute;
-            top: 60px; /* Adjust based on navbar height */
-            left: 0;
+            top: 70px; /* Adjust based on navbar height */
             background-color: $color-primary;
+            z-index: 200;
         }
     }
 
     &-toggle {
         display: none;
-
+    
         @include respond(mobile) {
-            display: none;
-            margin: $spacing-base;
-
-            &-label {
-                display: block;
-                font-size: $text-xl-mobile;
-                color: $color-dark;
-                cursor: pointer;
-
-                /* Hamburger icon styles */
-                position: relative;
-                width: 30px;
-                height: 30px;
-                background: transparent;
-                border: none;
-                padding: 0;
-                display: flex;
-                justify-content: space-between;
-                flex-direction: column;
-                align-items: center;
-
-                &::before,
-                &::after {
-                    content: '';
-                    width: 100%;
-                    height: 4px;
-                    background-color: $color-dark;
-                    border-radius: 4px;
-                    transition: all 0.3s ease;
-                }
-
-                & span {
-                    width: 100%;
-                    height: 4px;
-                    background-color: $color-dark;
-                    border-radius: 4px;
-                    transition: all 0.3s ease;
-                }
+        //   display: block;
+          position: relative;
+          z-index: 300;
+          &-label {
+              margin-right: 1rem;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 24px;
+    
+            span {
+              display: block;
+              width: 100%;
+              height: 4px;
+              background-color: $color-dark;
+              border-radius: 2px;
+              transition: all 0.3s ease;
             }
-
-            input:checked + .navbar-toggle-label {
-                &::before {
-                    transform: rotate(45deg);
-                    top: 10px;
-                }
-
-                &::after {
-                    transform: rotate(-45deg);
-                    top: -10px;
-                }
-
-                & span {
-                    opacity: 0;
-                }
-            }
+          }
+    
+          input:checked + &-label span:nth-child(1) {
+            transform: rotate(45deg) translateY(8px) translateX(6px);
+          }
+    
+          input:checked + &-label span:nth-child(2) {
+            opacity: 0;
+          }
+    
+          input:checked + &-label span:nth-child(3) {
+            transform: rotate(-45deg) translateY(-8px) translateX(6px);
+          }
         }
-    }
+      }
 
     /* Toggle the navbar menu when the checkbox is checked */
     input:checked + .navbar-toggle-label + .navbar-menu {

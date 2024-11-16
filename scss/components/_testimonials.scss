@@ -2,9 +2,9 @@
 
 .testimonials {
   overflow: hidden; // Ensure overflow is hidden for the entire section
+  padding: 4rem;
   padding-top: 8rem;
-  padding-bottom: 8rem;
-    padding: 4rem;
+  padding-bottom: 12rem;
     @include respond(mobile) {
         padding: 3rem;
     }
@@ -46,6 +46,7 @@
       scroll-behavior: smooth;
       padding-left: 17rem;
         padding-right: 17rem;
+        padding-bottom: 1rem;
       &::-webkit-scrollbar {
         display: none;
       }
@@ -64,8 +65,7 @@
       }
       &-card {
         background-color: $color-primary;
-        border-radius: 1rem;
-        box-shadow: 0.5rem  0.5rem 1rem rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 8px 11px -5px rgba(0,0,0,0.75);
         scroll-snap-align: start;
         padding-top: 10rem;
         padding-bottom: 6rem;
@@ -163,7 +163,7 @@
             padding-left: 3rem;
             padding-right: 1rem;
         }
-    }
+      }
     }
   }
 }
