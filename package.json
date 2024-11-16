@@ -4,13 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "compile": "sass scss/main.scss dist/style.css -w"
+    "watch:sass": "sass scss/main.scss dist/style.css -w",
+    "build": "sass scss/main.scss dist/style.css && postcss dist/style.css --output dist/style.css"
   },
   "devDependencies": {
-    "sass": "^1.80.7",
-    "vite": "^5.4.10"
-  }
+    "autoprefixer": "^10.4.20",
+    "postcss-cli": "^11.0.0",
+    "sass": "^1.80.7"
+  },
+  "browserslist": "> 1%, last 2 versions, not dead"
 }
